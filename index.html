@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Махачкала — Город Контрастов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --gold:      #C0922E;
+  --gold-lt:   #D9B97A;
+  --ink:       #1C1812;
+  --ink-2:     #4A4438;
+  --gray:      #9A9080;
+  --white:     #FEFCF7;
+  --cream:     #F7F3E8;
+  --ease:      cubic-bezier(0.34, 1.2, 0.64, 1);
+  --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Geologica', sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ── NAV ─────────────────────────── */
+nav {
+  position: fixed; top: 1.2rem; left: 50%; transform: translateX(-50%);
+  z-index: 500;
+  display: flex; align-items: center; gap: 3rem;
+  padding: .7rem 1.8rem .7rem 1.4rem;
+  border-radius: 100px;
+  background: rgba(254,252,247,0);
+  transition: background .4s, box-shadow .4s, backdrop-filter .4s;
+}
+nav.solid {
+  background: rgba(254,252,247,0.88);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0,0,0,.08), 0 0 0 1px rgba(192,146,46,.12);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-weight: 600; color: var(--white);
+  text-decoration: none; transition: color .3s;
+  white-space: nowrap;
+}
+nav.solid .nav-logo { color: var(--ink); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: .78rem; font-weight: 400; letter-spacing: .06em;
+  color: rgba(254,252,247,.75); text-decoration: none;
+  transition: color .2s, opacity .2s;
+}
+nav.solid .nav-links a { color: var(--ink-2); }
+.nav-links a:hover { color: var(--gold) !important; opacity: 1; }
+@media(max-width:640px){ .nav-links { display:none; } }
+
+/* ── HERO ────────────────────────── */
+.hero {
+  position: relative; height: 100svh; min-height: 580px;
+  display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 0 6vw 8vh;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to top, rgba(18,14,8,.85) 0%, rgba(18,14,8,.2) 55%, rgba(18,14,8,.3) 100%),
+    url('https://avatars.mds.yandex.net/get-vertis-journal/4469561/image3.jpg_1702403085646/orig') center/cover no-repeat;
+  transform: scale(1.04);
+  animation: zoomBg 18s ease-in-out infinite alternate;
+}
+@keyframes zoomBg { from { transform: scale(1.04); } to { transform: scale(1.1); } }
+
+.hero-pill {
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: .38rem .95rem; border-radius: 100px;
+  background: rgba(255,255,255,.1);
+  backdrop-filter: blur(8px);
+  font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 1.6rem;
+  opacity: 0; animation: fadeUp .8s .3s var(--ease) forwards;
+}
+.hero-pill-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold-lt); flex-shrink: 0;
+}
+
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.4rem, 8vw, 9rem);
+  font-weight: 700; line-height: .95; letter-spacing: -.02em;
+  color: var(--white);
+  opacity: 0; animation: fadeUp 1s .45s var(--ease) forwards;
+}
+.hero-h1 em { color: var(--gold-lt); font-style: italic; }
+
+.hero-sub {
+  margin-top: 1.6rem; max-width: 34rem;
+  font-size: clamp(.95rem, 1.3vw, 1.15rem); font-weight: 300;
+  color: rgba(254,252,247,.7); line-height: 1.8;
+  opacity: 0; animation: fadeUp .9s .65s var(--ease) forwards;
+}
+
+.hero-btn {
+  margin-top: 2.2rem;
+  display: inline-flex; align-items: center; gap: .7rem;
+  padding: .9rem 1.9rem; border-radius: 100px;
+  background: var(--gold); color: var(--white);
+  font-size: .82rem; font-weight: 500; letter-spacing: .04em;
+  text-decoration: none;
+  box-shadow: 0 8px 30px rgba(192,146,46,.35);
+  transition: transform .3s var(--ease), box-shadow .3s;
+  opacity: 0; animation: fadeUp .9s .85s var(--ease) forwards;
+}
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(192,146,46,.45);
+}
+.hero-btn svg { width: 15px; height: 15px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── ABOUT ───────────────────────── */
+#about { padding: clamp(5rem,9vw,9rem) 6vw; }
+
+.about-wrap {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+.about-tag {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.2rem;
+}
+.about-tag::before {
+  content: ''; width: 1.4rem; height: 1.5px; background: var(--gold); border-radius: 2px;
+}
+.about-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.5vw, 5rem);
+  font-weight: 700; line-height: 1.05; letter-spacing: -.02em;
+  margin-bottom: 1.8rem;
+}
+.about-body p {
+  font-size: 1.05rem; line-height: 1.9;
+  color: var(--ink-2); margin-bottom: 1rem;
+}
+
+.about-pills {
+  display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem;
+}
+.about-chip {
+  padding: .55rem 1.2rem; border-radius: 100px;
+  background: var(--cream);
+  font-size: .82rem; color: var(--ink-2); font-weight: 400;
+}
+.about-chip span { color: var(--gold); font-weight: 600; margin-right: .3rem; }
+
+.about-img-wrap {
+  position: relative;
+}
+.about-img-main {
+  width: 100%; height: 500px; object-fit: cover;
+  border-radius: 2rem;
+  display: block;
+  box-shadow: 0 30px 70px rgba(0,0,0,.12);
+}
+.about-img-float {
+  position: absolute; bottom: -2rem; left: -2rem;
+  width: 200px; height: 200px; object-fit: cover;
+  border-radius: 1.4rem;
+  border: 5px solid var(--white);
+  box-shadow: 0 16px 40px rgba(0,0,0,.15);
+}
+
+@media(max-width:800px){
+  .about-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-img-main { height: 320px; }
+  .about-img-float { width: 130px; height: 130px; left: -1rem; }
+}
+
+/* ── PLACES ──────────────────────── */
+#places { padding: clamp(4rem,8vw,8rem) 6vw; background: var(--cream); }
+
+.places-head { margin-bottom: 3rem; }
+.places-head .about-h2 { margin-bottom: .6rem; }
+.places-head p { font-size: 1rem; color: var(--gray); line-height: 1.7; max-width: 38rem; }
+
+.places-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.2rem;
+}
+.place-card {
+  position: relative; overflow: hidden;
+  border-radius: 1.5rem; cursor: default;
+}
+.place-card.big { grid-row: span 2; }
+.place-card img {
+  width: 100%; height: 300px; object-fit: cover; display: block;
+  transition: transform .7s var(--ease-soft), filter .5s;
+  filter: brightness(.8);
+}
+.place-card.big img { height: 100%; min-height: 640px; }
+.place-card:hover img { transform: scale(1.05); filter: brightness(.9); }
+
+.place-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 1.8rem 1.6rem 1.6rem;
+  background: linear-gradient(to top, rgba(14,10,4,.88) 0%, transparent 100%);
+  border-radius: 0 0 1.5rem 1.5rem;
+}
+.place-tag {
+  font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold-lt); display: block; margin-bottom: .4rem;
+}
+.place-caption h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2vw, 1.9rem); font-weight: 600;
+  color: var(--white); line-height: 1.1; margin-bottom: .35rem;
+}
+.place-caption p { font-size: .86rem; color: rgba(255,255,255,.6); line-height: 1.5; }
+
+@media(max-width:700px){
+  .places-grid { grid-template-columns: 1fr; }
+  .place-card.big img { min-height: 360px; }
+}
+
+/* ── FOOD ────────────────────────── */
+#food { padding: clamp(4rem,8vw,8rem) 6vw; }
+
+.food-head {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap;
+}
+.food-head p { max-width: 28rem; font-size: .98rem; color: var(--gray); line-height: 1.75; }
+
+.food-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem;
+}
+.food-card {
+  border-radius: 1.4rem; overflow: hidden;
+  background: var(--cream);
+  transition: transform .4s var(--ease), box-shadow .4s;
+}
+.food-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.1);
+}
+.food-img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover;
+  display: block; filter: saturate(.92);
+  transition: filter .4s, transform .5s var(--ease-soft);
+}
+.food-card:hover .food-img { filter: saturate(1.08); transform: scale(1.03); }
+.food-body { padding: 1.3rem 1.4rem 1.5rem; }
+.food-num {
+  font-size: .58rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .45rem;
+}
+.food-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 600; margin-bottom: .4rem;
+}
+.food-desc { font-size: .85rem; color: var(--gray); line-height: 1.6; }
+
+@media(max-width:900px){ .food-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:480px){ .food-grid { grid-template-columns: 1fr; } }
+
+/* ── UFC ─────────────────────────── */
+#ufc {
+  padding: clamp(4rem,8vw,8rem) 6vw;
+  background: var(--ink);
+  position: relative; overflow: hidden;
+}
+.ufc-glow {
+  position: absolute; top: -20%; right: -10%;
+  width: 60vw; height: 60vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(192,146,46,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ufc-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+
+.ufc-tag {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 1.2rem;
+}
+.ufc-tag::before { content: ''; width: 1.4rem; height: 1.5px; background: var(--gold-lt); border-radius: 2px; }
+
+.ufc-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.5vw, 5rem);
+  font-weight: 700; line-height: 1.05; color: var(--white);
+  letter-spacing: -.02em; margin-bottom: 2rem;
+}
+.ufc-h2 em { color: var(--gold-lt); font-style: italic; }
+
+.ufc-body p {
+  font-size: 1rem; line-height: 1.9;
+  color: rgba(254,252,247,.6); margin-bottom: 1rem;
+}
+.ufc-body strong { color: rgba(254,252,247,.9); font-weight: 500; }
+
+/* fight card */
+.fight-card {
+  border-radius: 1.6rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(192,146,46,.15);
+  padding: 2rem 2rem 1.6rem;
+  margin-bottom: 1.2rem;
+}
+.fight-meta {
+  font-size: .62rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 1.6rem; opacity: .7;
+}
+.fight-names {
+  display: flex; align-items: center; gap: 1rem; justify-content: space-between;
+  margin-bottom: 1.6rem;
+}
+.fn {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem,2.2vw,2.2rem); font-weight: 700; color: var(--white);
+  line-height: 1.05;
+}
+.fn-from { font-size: .7rem; color: var(--gray); margin-top: .2rem; }
+.vs {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 300; color: var(--gold); opacity: .45;
+  flex-shrink: 0;
+}
+.fight-result {
+  padding: 1rem 1.3rem; border-radius: 1rem;
+  background: rgba(192,146,46,.08);
+  font-size: .9rem; color: rgba(254,252,247,.75); line-height: 1.6;
+}
+.fight-result strong { color: var(--gold-lt); }
+
+/* fighters */
+.fighters-row {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem;
+}
+.fc {
+  padding: 1.6rem 1.5rem; border-radius: 1.4rem;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+  transition: background .3s;
+}
+.fc:hover { background: rgba(255,255,255,.06); }
+.fc-role {
+  font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .6rem;
+}
+.fc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 600; color: var(--white); line-height: 1.15;
+  margin-bottom: .5rem;
+}
+.fc-bio { font-size: .83rem; color: rgba(254,252,247,.45); line-height: 1.6; }
+
+@media(max-width:800px){
+  .ufc-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .fighters-row { grid-template-columns: 1fr; }
+}
+
+/* ── CLOSING ─────────────────────── */
+#closing {
+  position: relative; min-height: 85vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 8rem 6vw;
+  overflow: hidden;
+}
+.closing-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(18,14,8,.6), rgba(18,14,8,.55)),
+    url('https://avatars.mds.yandex.net/get-vertis-journal/4469561/image3.jpg_1702403085646/orig') center/cover no-repeat;
+}
+.closing-content { position: relative; z-index: 1; max-width: 54rem; }
+.closing-tag {
+  display: inline-flex; align-items: center; gap: .7rem;
+  font-size: .65rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 2rem; opacity: .8;
+}
+.closing-tag::before,.closing-tag::after { content: ''; display:block; width:1.5rem; height:1px; background:var(--gold-lt); }
+.closing-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem,5.5vw,6rem); font-weight: 400;
+  color: var(--white); line-height: 1.25; letter-spacing: -.01em;
+}
+.closing-h2 em { font-style: italic; color: var(--gold-lt); }
+.closing-h2 strong { font-weight: 700; }
+.closing-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); margin: 2rem auto; opacity: .6;
+}
+.closing-sub {
+  font-size: 1rem; color: rgba(255,255,255,.55); line-height: 1.85; max-width: 30rem; margin: 0 auto;
+}
+.closing-coords {
+  margin-top: 2.5rem; font-size: .62rem; letter-spacing: .3em;
+  color: rgba(255,255,255,.2); text-transform: uppercase;
+}
+
+/* ── FOOTER ──────────────────────── */
+footer {
+  padding: 2.5rem 6vw; background: var(--ink);
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 600;
+  color: rgba(255,255,255,.2); text-decoration: none;
+}
+.footer-copy { font-size: .72rem; color: rgba(255,255,255,.18); letter-spacing: .08em; }
+
+/* ── REVEAL ──────────────────────── */
+.r {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .85s var(--ease-soft), transform .85s var(--ease-soft);
+}
+.r.in { opacity: 1; transform: none; }
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .18s; }
+.d3 { transition-delay: .26s; }
+.d4 { transition-delay: .34s; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">МХЧ · Дагестан</a>
+  <ul class="nav-links">
+    <li><a href="#about">О городе</a></li>
+    <li><a href="#places">Места</a></li>
+    <li><a href="#food">Еда</a></li>
+    <li><a href="#ufc">UFC</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="hbg"></div>
+
+  <div class="hero-pill">
+    <div class="hero-pill-dot"></div>
+    Дагестан, Россия
+  </div>
+
+  <h1 class="hero-h1">Махачкала —<br><em>город контрастов</em></h1>
+
+  <p class="hero-sub">Шумный. Суровый. Настоящий.<br>Между Каспием и Кавказом.</p>
+
+  <a href="#about" class="hero-btn">
+    Исследовать Дагестан
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div>
+      <div class="about-tag r">О городе</div>
+      <h2 class="about-h2 r d1">Море.<br>Горы.<br>Характер.</h2>
+      <div class="about-body r d2">
+        <p>Махачкала — город с очень сильным контрастом. Шумный, хаотичный, местами суровый: пробки, рынки, плотная застройка, резкий каспийский ветер.</p>
+        <p>Но в этом и есть его характер. Город стоит между Каспийским морем и Кавказскими горами — за один день можно пить чай на берегу, а через пару часов стоять над каньоном.</p>
+        <p>Это не «открыточный» город. Он грубый, живой и настоящий.</p>
+      </div>
+      <div class="about-pills r d3">
+        <div class="about-chip"><span>~1M</span> жителей</div>
+        <div class="about-chip"><span>2000+</span> лет истории</div>
+        <div class="about-chip"><span>420м</span> глубина Сулака</div>
+        <div class="about-chip"><span>3+</span> чемпиона UFC</div>
+      </div>
+    </div>
+    <div class="about-img-wrap r d2">
+      <img class="about-img-main"
+        src="https://severnykavkaz.ru/wp-content/uploads/2019/05/gory-dagestana.jpg"
+        alt="Горы Дагестана">
+      <img class="about-img-float"
+        src="https://static.tildacdn.com/tild6333-6263-4165-b062-366664646465/gunib-village-in-the.jpg"
+        alt="Гуниб">
+    </div>
+  </div>
+</section>
+
+<!-- PLACES -->
+<section id="places">
+  <div class="places-head">
+    <div class="about-tag r">Красивые места</div>
+    <h2 class="about-h2 r d1">Дагестан, который<br>выбивает мысли</h2>
+    <p class="r d2">Каньоны, пустыни, крепости и горные аулы — всё в одном регионе.</p>
+  </div>
+
+  <div class="places-grid">
+    <div class="place-card big r">
+      <img
+        src="https://sarirtour.ru/wp-content/uploads/2024/07/img-back-002.jpg"
+        alt="Сулакский каньон">
+      <div class="place-caption">
+        <span class="place-tag">Каньон · Дагестан</span>
+        <h3>Сулакский каньон</h3>
+        <p>Бирюзовая вода, смотровые в Дубках. Глубже Гранд-Каньона — и красивее.</p>
+      </div>
+    </div>
+
+    <div class="place-card r d1">
+      <img
+        src="https://img.geliophoto.com/sarykum/00_sarykum.jpg"
+        alt="Бархан Сарыкум">
+      <div class="place-caption">
+        <span class="place-tag">Пустыня</span>
+        <h3>Бархан Сарыкум</h3>
+        <p>Настоящий бархан посреди Кавказа. Место съёмок «Белого солнца пустыни».</p>
+      </div>
+    </div>
+
+    <div class="place-card r d2">
+      <img
+        src="https://russia.ru/storage/news/resized/4cfdd0a129e9738d4a99b7e2bb739156.webp"
+        alt="Нарын-Кала">
+      <div class="place-caption">
+        <span class="place-tag">Крепость · Дербент</span>
+        <h3>Нарын-Кала</h3>
+        <p>Стенам больше тысячи лет. Один из древнейших городов России.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Гуниб отдельно -->
+  <div style="margin-top:1.2rem">
+    <div class="place-card r" style="border-radius:1.5rem">
+      <img
+        src="https://static.tildacdn.com/tild6333-6263-4165-b062-366664646465/gunib-village-in-the.jpg"
+        style="height:340px"
+        alt="Гуниб">
+      <div class="place-caption">
+        <span class="place-tag">Горное село</span>
+        <h3>Гуниб</h3>
+        <p>Горы, облака под ногами, аулы на склонах. Тихий и величественный — другой Дагестан.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD -->
+<section id="food">
+  <div class="food-head">
+    <div>
+      <div class="about-tag r">Национальная кухня</div>
+      <h2 class="about-h2 r d1">Дагестан<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold)">уничтожает</em><br>стереотипы</h2>
+    </div>
+    <p class="r d1">Никакой «просто кавказской кухни» — каждое блюдо со своей историей и своим характером.</p>
+  </div>
+
+  <div class="food-grid">
+    <div class="food-card r">
+      <img class="food-img"
+        src="https://vkusnoff.com/img/recepty/4124/big.webp"
+        alt="Хинкал">
+      <div class="food-body">
+        <div class="food-num">01 · Главное блюдо</div>
+        <div class="food-name">Хинкал</div>
+        <div class="food-desc">Не путать с грузинскими хинкали. Мясо, тесто, бульон, чесночный соус.</div>
+      </div>
+    </div>
+    <div class="food-card r d1">
+      <img class="food-img"
+        src="https://vkusvill.ru/upload/resize/1261792/chudu-s-syrom-i-zelenyu_588x409x90_c.webp"
+        alt="Чуду">
+      <div class="food-body">
+        <div class="food-num">02 · Лепёшки</div>
+        <div class="food-name">Чуду</div>
+        <div class="food-desc">Тонкие лепёшки с мясом, тыквой, зеленью или творогом. Лучшие домашние.</div>
+      </div>
+    </div>
+    <div class="food-card r d2">
+      <img class="food-img"
+        src="https://img.iamcook.ru/2022/upl/recipes/zen/u-67dbcc898e735f60d41c0728eff1124e.JPG"
+        alt="Курзе">
+      <div class="food-body">
+        <div class="food-num">03 · Пельмени</div>
+        <div class="food-name">Курзе</div>
+        <div class="food-desc">Похоже на пельмени, но со своим дагестанским стилем.</div>
+      </div>
+    </div>
+    <div class="food-card r d3">
+      <img class="food-img"
+        src="https://dobroded.ru/images/blog/2/f70d119da9a5f06518da498119fa5ecb_ce_2200x1466x0x53.jpg"
+        alt="Урбеч">
+      <div class="food-body">
+        <div class="food-num">04 · Суперфуд</div>
+        <div class="food-name">Урбеч</div>
+        <div class="food-desc">Паста из льна, орехов или абрикосовых косточек. Старый горский суперфуд.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UFC -->
+<section id="ufc">
+  <div class="ufc-glow"></div>
+  <div class="ufc-layout">
+    <div>
+      <div class="ufc-tag r">Дагестан и мир</div>
+      <h2 class="ufc-h2 r d1">Почему весь мир<br>услышал о<br><em>Махачкале?</em></h2>
+      <div class="ufc-body r d2">
+        <p>UFC 229. <strong>Хабиб Нурмагомедов против Конора Макгрегора.</strong> Не просто бой — мировая драма.</p>
+        <p>Конор месяцами оскорблял Хабиба, его семью и религию. Весь мир ждал развязки.</p>
+        <p>Раунд 4. <strong>Удушающий приём.</strong> Потом Хабиб перепрыгнул клетку. Этот момент видели миллионы.</p>
+        <p>Люди начали спрашивать: <strong>«Откуда этот парень?»</strong> — и узнали про Махачкалу, Каспийск и дагестанскую школу борьбы.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="fight-card r d1">
+        <div class="fight-meta">UFC 229 · Las Vegas · 6 октября 2018</div>
+        <div class="fight-names">
+          <div>
+            <div class="fn">Хабиб<br>Нурмагомедов</div>
+            <div class="fn-from">Дагестан, Россия</div>
+          </div>
+          <div class="vs">vs</div>
+          <div style="text-align:right">
+            <div class="fn">Конор<br>Макгрегор</div>
+            <div class="fn-from" style="text-align:right">Ирландия</div>
+          </div>
+        </div>
+        <div class="fight-result">
+          Победа Хабиба удушающим приёмом · Раунд 4<br>
+          <strong>Итоговый рекорд: 29–0</strong>
+        </div>
+      </div>
+
+      <div class="fighters-row r d2">
+        <div class="fc">
+          <div class="fc-role">Основатель школы</div>
+          <div class="fc-name">Абдулманап<br>Нурмагомедов</div>
+          <div class="fc-bio">Отец Хабиба. Создал систему подготовки, изменившую мировые единоборства.</div>
+        </div>
+        <div class="fc">
+          <div class="fc-role">Чемпион UFC</div>
+          <div class="fc-name">Ислам<br>Махачев</div>
+          <div class="fc-bio">Продолжатель дела Хабиба. Один из лучших бойцов планеты.</div>
+        </div>
+        <div class="fc">
+          <div class="fc-role">Восходящая звезда</div>
+          <div class="fc-name">Умар<br>Нурмагомедов</div>
+          <div class="fc-bio">Племянник Хабиба. Дагестан — фабрика чемпионов.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section id="closing">
+  <div class="closing-bg"></div>
+  <div class="closing-content">
+    <div class="closing-tag r">Махачкала</div>
+    <h2 class="closing-h2 r d1">
+      Это не идеальная <em>открытка.</em><br>
+      Она <strong>грубая. Живая.</strong><br>
+      <em>Настоящая.</em><br>
+      И именно поэтому —<br>
+      её невозможно забыть.
+    </h2>
+    <div class="closing-dot r d2"></div>
+    <p class="closing-sub r d2">
+      Здесь море встречается с горами, старые традиции — с современным хаосом, а из обычных дворов выходят чемпионы, которых знает весь мир.
+    </p>
+    <div class="closing-coords r d3">42°58′N · 47°30′E · Дагестан · Россия</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">МХЧ · Дагестан</a>
+  <div class="footer-copy">Море. Горы. Характер.</div>
+</footer>
+
+<script>
+/* Nav */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', scrollY > 60);
+}, { passive: true });
+
+/* Parallax hero */
+const hbg = document.getElementById('hbg');
+window.addEventListener('scroll', () => {
+  if (scrollY < innerHeight)
+    hbg.style.transform = `translateY(${scrollY * .3}px) scale(1.04)`;
+}, { passive: true });
+
+/* Scroll reveal */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), i * 50);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+/* Smooth anchors */
+document.querySelectorAll('a[href^="#"]').forEach(a =>
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  })
+);
+</script>
+</body>
+</html>
