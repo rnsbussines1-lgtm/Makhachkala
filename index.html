@@ -34,7 +34,7 @@ body {
 nav {
   position: fixed; top: 1.2rem; left: 50%; transform: translateX(-50%);
   z-index: 500;
-  display: flex; align-items: center; gap: 3rem;
+  display: flex; align-items: center; gap: 2.2rem;
   padding: .7rem 1.8rem .7rem 1.4rem;
   border-radius: 100px;
   background: rgba(254,252,247,0);
@@ -52,15 +52,15 @@ nav.solid {
   white-space: nowrap;
 }
 nav.solid .nav-logo { color: var(--ink); }
-.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links { display: flex; gap: 1.6rem; list-style: none; }
 .nav-links a {
-  font-size: .78rem; font-weight: 400; letter-spacing: .06em;
+  font-size: .74rem; font-weight: 400; letter-spacing: .06em;
   color: rgba(254,252,247,.75); text-decoration: none;
   transition: color .2s, opacity .2s;
 }
 nav.solid .nav-links a { color: var(--ink-2); }
 .nav-links a:hover { color: var(--gold) !important; opacity: 1; }
-@media(max-width:640px){ .nav-links { display:none; } }
+@media(max-width:700px){ .nav-links { display:none; } }
 
 /* ── HERO ────────────────────────── */
 .hero {
@@ -190,8 +190,141 @@ nav.solid .nav-links a { color: var(--ink-2); }
   .about-img-float { width: 130px; height: 130px; left: -1rem; }
 }
 
+/* ── HISTORY ─────────────────────── */
+#history {
+  padding: clamp(4rem,8vw,8rem) 6vw;
+  background: var(--ink);
+  position: relative; overflow: hidden;
+}
+.history-orb {
+  position: absolute; top: 10%; left: -15%;
+  width: 55vw; height: 55vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(192,146,46,.05) 0%, transparent 65%);
+  pointer-events: none;
+}
+.history-orb2 {
+  position: absolute; bottom: -10%; right: -10%;
+  width: 40vw; height: 40vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(192,146,46,.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.history-head { margin-bottom: 4rem; }
+.history-tag {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 1.2rem;
+}
+.history-tag::before { content: ''; width: 1.4rem; height: 1.5px; background: var(--gold-lt); border-radius: 2px; }
+
+.history-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.5vw, 5rem);
+  font-weight: 700; color: var(--white);
+  line-height: 1.05; letter-spacing: -.02em;
+}
+.history-h2 em { color: var(--gold-lt); font-style: italic; }
+
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute; left: 0; top: 8px; bottom: 8px;
+  width: 1.5px;
+  background: linear-gradient(to bottom, transparent, var(--gold) 10%, var(--gold) 90%, transparent);
+  opacity: .25;
+}
+
+.tl-item {
+  position: relative;
+  padding: 0 0 3rem 2.5rem;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -2.5rem; top: .35rem;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gold); opacity: .7;
+  box-shadow: 0 0 0 4px rgba(192,146,46,.12);
+}
+.tl-year {
+  font-size: .65rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .5rem;
+}
+.tl-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 600;
+  color: var(--white); margin-bottom: .6rem; line-height: 1.15;
+}
+.tl-body {
+  font-size: .95rem; line-height: 1.85;
+  color: rgba(254,252,247,.5);
+}
+.tl-body strong { color: rgba(254,252,247,.8); font-weight: 500; }
+
+/* ── PERSONALITIES ───────────────── */
+#personalities { padding: clamp(4rem,8vw,8rem) 6vw; background: var(--cream); }
+
+.pers-head { margin-bottom: 3.5rem; }
+.pers-head p { max-width: 36rem; font-size: .98rem; color: var(--gray); line-height: 1.75; margin-top: .8rem; }
+
+.pers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+}
+.pers-card {
+  background: var(--white);
+  border-radius: 1.6rem;
+  overflow: hidden;
+  transition: transform .4s var(--ease), box-shadow .4s;
+  box-shadow: 0 4px 20px rgba(0,0,0,.05);
+}
+.pers-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.1);
+}
+.pers-era {
+  padding: .45rem 1rem;
+  font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--white);
+}
+.pers-era.era-soviet { background: var(--ink-2); }
+.pers-era.era-modern { background: var(--gold); }
+.pers-era.era-classic { background: #5a4a38; }
+
+.pers-body { padding: 1.8rem 1.8rem 2rem; }
+.pers-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem; font-weight: 700; line-height: 1.05;
+  margin-bottom: .35rem;
+}
+.pers-years {
+  font-size: .7rem; letter-spacing: .12em; color: var(--gold);
+  margin-bottom: .9rem;
+}
+.pers-role {
+  font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: .9rem;
+}
+.pers-bio {
+  font-size: .9rem; line-height: 1.75; color: var(--ink-2);
+}
+.pers-quote {
+  margin-top: 1.2rem; padding: 1rem 1.2rem;
+  border-left: 2px solid var(--gold);
+  background: var(--cream);
+  border-radius: 0 .8rem .8rem 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-style: italic; color: var(--ink-2); line-height: 1.6;
+}
+
+@media(max-width:900px){ .pers-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:560px){ .pers-grid { grid-template-columns: 1fr; } }
+
 /* ── PLACES ──────────────────────── */
-#places { padding: clamp(4rem,8vw,8rem) 6vw; background: var(--cream); }
+#places { padding: clamp(4rem,8vw,8rem) 6vw; }
 
 .places-head { margin-bottom: 3rem; }
 .places-head .about-h2 { margin-bottom: .6rem; }
@@ -238,6 +371,59 @@ nav.solid .nav-links a { color: var(--ink-2); }
   .place-card.big img { min-height: 360px; }
 }
 
+/* ── CITIES ──────────────────────── */
+#cities { padding: clamp(4rem,8vw,8rem) 6vw; background: var(--cream); }
+
+.cities-head { margin-bottom: 3rem; }
+.cities-head p { max-width: 38rem; font-size: .98rem; color: var(--gray); line-height: 1.75; margin-top: .8rem; }
+
+.cities-list {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem;
+}
+.city-card {
+  border-radius: 1.6rem; overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 4px 20px rgba(0,0,0,.05);
+  transition: transform .4s var(--ease), box-shadow .4s;
+}
+.city-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,.1); }
+.city-img {
+  width: 100%; height: 200px; object-fit: cover;
+  display: block;
+  transition: transform .6s var(--ease-soft), filter .4s;
+  filter: brightness(.85);
+}
+.city-card:hover .city-img { transform: scale(1.05); filter: brightness(.95); }
+.city-body { padding: 1.6rem 1.8rem 2rem; }
+.city-badge {
+  display: inline-block; margin-bottom: .8rem;
+  padding: .3rem .9rem; border-radius: 100px;
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  background: var(--cream); color: var(--gold); font-weight: 500;
+}
+.city-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 700; line-height: 1.05;
+  margin-bottom: .5rem;
+}
+.city-sub {
+  font-size: .78rem; letter-spacing: .08em; color: var(--gray);
+  text-transform: uppercase; margin-bottom: .9rem;
+}
+.city-desc {
+  font-size: .9rem; line-height: 1.75; color: var(--ink-2);
+}
+.city-facts {
+  display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.2rem;
+}
+.city-fact {
+  padding: .35rem .8rem; border-radius: 100px;
+  background: var(--cream); font-size: .75rem; color: var(--ink-2);
+}
+
+@media(max-width:900px){ .cities-list { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:560px){ .cities-list { grid-template-columns: 1fr; } }
+
 /* ── FOOD ────────────────────────── */
 #food { padding: clamp(4rem,8vw,8rem) 6vw; }
 
@@ -279,6 +465,188 @@ nav.solid .nav-links a { color: var(--ink-2); }
 @media(max-width:900px){ .food-grid { grid-template-columns: repeat(2,1fr); } }
 @media(max-width:480px){ .food-grid { grid-template-columns: 1fr; } }
 
+/* ── KUMYK ───────────────────────── */
+#kumyk {
+  padding: clamp(4rem,8vw,8rem) 6vw;
+  background: linear-gradient(135deg, #1c1812 0%, #2a2318 60%, #1c1812 100%);
+  position: relative; overflow: hidden;
+}
+.kumyk-pattern {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(192,146,46,.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(192,146,46,.03) 0%, transparent 40%);
+  pointer-events: none;
+}
+/* geometric ornament */
+.kumyk-ornament {
+  position: absolute; right: 4vw; top: 50%;
+  transform: translateY(-50%);
+  width: min(280px, 30vw); height: min(280px, 30vw);
+  opacity: .06; pointer-events: none;
+}
+
+.kumyk-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+  position: relative; z-index: 1;
+}
+
+.kumyk-tag {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 1.2rem;
+}
+.kumyk-tag::before { content: ''; width: 1.4rem; height: 1.5px; background: var(--gold-lt); border-radius: 2px; }
+
+.kumyk-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.5vw, 5rem);
+  font-weight: 700; line-height: 1.0; color: var(--white);
+  letter-spacing: -.02em; margin-bottom: 2rem;
+}
+.kumyk-h2 em { color: var(--gold-lt); font-style: italic; }
+
+.kumyk-body p {
+  font-size: 1rem; line-height: 1.9;
+  color: rgba(254,252,247,.55); margin-bottom: 1rem;
+}
+.kumyk-body strong { color: rgba(254,252,247,.85); font-weight: 500; }
+
+.kumyk-phrases {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(192,146,46,.15);
+  border-radius: 1.6rem;
+  overflow: hidden;
+}
+.kumyk-phrases-head {
+  padding: 1.2rem 1.8rem;
+  border-bottom: 1px solid rgba(192,146,46,.1);
+  font-size: .65rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold); opacity: .8;
+}
+.kumyk-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding: 1rem 1.8rem;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  transition: background .2s;
+  gap: 1rem; align-items: center;
+}
+.kumyk-row:last-child { border-bottom: none; }
+.kumyk-row:hover { background: rgba(255,255,255,.03); }
+.kumyk-original {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 600;
+  color: var(--gold-lt); line-height: 1.2;
+}
+.kumyk-trans {
+  font-size: .88rem; color: rgba(254,252,247,.5); line-height: 1.4;
+}
+
+.kumyk-stats {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; margin-top: 2rem;
+}
+.kumyk-stat {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(192,146,46,.1);
+  border-radius: 1.2rem; padding: 1.4rem 1.6rem;
+}
+.kumyk-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem; font-weight: 700;
+  color: var(--gold-lt); line-height: 1;
+  margin-bottom: .3rem;
+}
+.kumyk-stat-label {
+  font-size: .78rem; color: rgba(254,252,247,.4); line-height: 1.4;
+}
+
+@media(max-width:800px){
+  .kumyk-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .kumyk-stats { grid-template-columns: repeat(2,1fr); }
+}
+
+/* ── IT HUB ──────────────────────── */
+#ithub {
+  padding: clamp(4rem,8vw,8rem) 6vw;
+  background: var(--white);
+}
+
+.ithub-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+
+.ithub-tag {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.2rem;
+}
+.ithub-tag::before { content: ''; width: 1.4rem; height: 1.5px; background: var(--gold); border-radius: 2px; }
+
+.ithub-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.5vw, 5rem);
+  font-weight: 700; line-height: 1.05; letter-spacing: -.02em;
+  margin-bottom: 2rem;
+}
+.ithub-h2 em { font-style: italic; color: var(--gold); }
+
+.ithub-body p {
+  font-size: 1rem; line-height: 1.9; color: var(--ink-2); margin-bottom: 1rem;
+}
+.ithub-body strong { color: var(--ink); }
+
+.ithub-cards {
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.ithub-card {
+  border-radius: 1.4rem;
+  border: 1px solid rgba(192,146,46,.15);
+  background: var(--cream);
+  padding: 1.6rem 1.8rem;
+  transition: transform .3s var(--ease), box-shadow .3s, background .3s;
+}
+.ithub-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0,0,0,.07);
+  background: var(--white);
+}
+.ithub-icon {
+  font-size: 1.8rem; margin-bottom: .8rem; line-height: 1;
+}
+.ithub-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem; font-weight: 700; margin-bottom: .5rem;
+}
+.ithub-card-desc {
+  font-size: .88rem; color: var(--gray); line-height: 1.65;
+}
+
+.ithub-metrics {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: .8rem; margin-top: 2rem;
+}
+.ithub-metric {
+  background: var(--ink); color: var(--white);
+  border-radius: 1.2rem; padding: 1.4rem;
+  text-align: center;
+}
+.ithub-metric-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 700; color: var(--gold-lt);
+  margin-bottom: .3rem;
+}
+.ithub-metric-label {
+  font-size: .72rem; color: rgba(254,252,247,.45); line-height: 1.4;
+  letter-spacing: .04em;
+}
+
+@media(max-width:800px){
+  .ithub-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .ithub-metrics { grid-template-columns: repeat(3,1fr); }
+}
+@media(max-width:480px){
+  .ithub-metrics { grid-template-columns: 1fr; }
+}
+
 /* ── UFC ─────────────────────────── */
 #ufc {
   padding: clamp(4rem,8vw,8rem) 6vw;
@@ -317,7 +685,6 @@ nav.solid .nav-links a { color: var(--ink-2); }
 }
 .ufc-body strong { color: rgba(254,252,247,.9); font-weight: 500; }
 
-/* fight card */
 .fight-card {
   border-radius: 1.6rem;
   background: rgba(255,255,255,.04);
@@ -351,7 +718,6 @@ nav.solid .nav-links a { color: var(--ink-2); }
 }
 .fight-result strong { color: var(--gold-lt); }
 
-/* fighters */
 .fighters-row {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem;
 }
@@ -450,8 +816,13 @@ footer {
   <a class="nav-logo" href="#">МХЧ · Дагестан</a>
   <ul class="nav-links">
     <li><a href="#about">О городе</a></li>
+    <li><a href="#history">История</a></li>
+    <li><a href="#personalities">Личности</a></li>
     <li><a href="#places">Места</a></li>
+    <li><a href="#cities">Города</a></li>
     <li><a href="#food">Еда</a></li>
+    <li><a href="#kumyk">Язык</a></li>
+    <li><a href="#ithub">IT</a></li>
     <li><a href="#ufc">UFC</a></li>
   </ul>
 </nav>
@@ -504,6 +875,133 @@ footer {
   </div>
 </section>
 
+<!-- HISTORY -->
+<section id="history">
+  <div class="history-orb"></div>
+  <div class="history-orb2"></div>
+
+  <div class="history-head">
+    <div class="history-tag r">Хронология</div>
+    <h2 class="history-h2 r d1">История города,<br>которому <em>2000 лет</em></h2>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start">
+    <div class="timeline r d1">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">V–VIII век</div>
+        <div class="tl-title">Дербент — ворота мира</div>
+        <div class="tl-body">Арабские халифы строят крепость <strong>Нарын-Кала</strong> и стены вдоль Каспийского побережья. Дербент становится главным форпостом мусульманского мира на севере, а ислам начинает распространяться по Дагестану.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1844</div>
+        <div class="tl-title">Основание Петровска</div>
+        <div class="tl-body">Русская крепость на берегу Каспия получает название <strong>Петровск</strong> в честь Петра I, который останавливался здесь в 1722 году во время Персидского похода. Начинается новая страница истории города.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1857</div>
+        <div class="tl-title">Имам Шамиль</div>
+        <div class="tl-body">Конец <strong>Кавказской войны</strong>. Имам Шамиль — духовный и военный лидер горцев, державший в напряжении весь XIX век — пленён в ауле Гуниб. Легенда, которую Дагестан помнит до сих пор.</div>
+      </div>
+    </div>
+    <div class="timeline r d2">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1921</div>
+        <div class="tl-title">Махачкала — столица</div>
+        <div class="tl-body">Петровск переименован в <strong>Махачкалу</strong> — в честь революционера Магомеда-Али Дахадаева по прозвищу «Махач». Город становится столицей Дагестанской АССР.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1941–1945</div>
+        <div class="tl-title">Великая Отечественная</div>
+        <div class="tl-body">Дагестанцы сражались на всех фронтах. Через Махачкалу шли грузы по <strong>«дороге жизни»</strong> — Каспий был стратегической артерией. Порт работал круглосуточно. Сотни тысяч дагестанцев встали на защиту Родины.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1999</div>
+        <div class="tl-title">Вторжение — и отпор</div>
+        <div class="tl-body">Боевики вошли в Дагестан через Ботлихский и Цумадинский районы. Республика <strong>дала отпор своими силами</strong> — жители вставали в ополчение. Это событие сформировало современный образ Дагестана — стойкого и сплочённого.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONALITIES -->
+<section id="personalities">
+  <div class="pers-head">
+    <div class="about-tag r">Люди, изменившие мир</div>
+    <h2 class="about-h2 r d1">Личности<br>Махачкалы</h2>
+    <p class="r d2">От средневековых поэтов до советских генералов и современных чемпионов — Дагестан всегда рождал личностей.</p>
+  </div>
+
+  <div class="pers-grid">
+
+    <!-- Расул Гамзатов -->
+    <div class="pers-card r">
+      <div class="pers-era era-soviet">Советская эпоха</div>
+      <div class="pers-body">
+        <div class="pers-name">Расул Гамзатов</div>
+        <div class="pers-years">1923 — 2003</div>
+        <div class="pers-role">Поэт · Народный поэт Дагестана</div>
+        <div class="pers-bio">Величайший поэт Дагестана и один из самых читаемых поэтов Советского Союза. Писал на аварском языке, переведён на десятки языков мира. Лауреат Ленинской премии.</div>
+        <div class="pers-quote">«Если завтра моё слово устареет — напишу другое. Но пока оно живёт — оно моё.»</div>
+      </div>
+    </div>
+
+    <!-- Имам Шамиль -->
+    <div class="pers-card r d1">
+      <div class="pers-era era-classic">Классическая эпоха</div>
+      <div class="pers-body">
+        <div class="pers-name">Имам Шамиль</div>
+        <div class="pers-years">1797 — 1871</div>
+        <div class="pers-role">Военный лидер · Имам Северо-Кавказского имамата</div>
+        <div class="pers-bio">25 лет возглавлял сопротивление горцев. Духовный вождь, стратег и человек невероятной воли. Европейские газеты XIX века писали о нём как об одном из самых значимых людей эпохи.</div>
+        <div class="pers-quote">«Горец не умирает — он уходит в горы.»</div>
+      </div>
+    </div>
+
+    <!-- Магомед Гаджиев -->
+    <div class="pers-card r d2">
+      <div class="pers-era era-soviet">Советская эпоха</div>
+      <div class="pers-body">
+        <div class="pers-name">Магомед Гаджиев</div>
+        <div class="pers-years">1902 — 1942</div>
+        <div class="pers-role">Капитан 1-го ранга · Герой Советского Союза</div>
+        <div class="pers-bio">Первый дагестанец, ставший морским офицером высокого ранга. Командовал подводными лодками на Северном флоте. Погиб в бою в 1942 году. Его именем названа улица в Махачкале.</div>
+        <div class="pers-quote">Умер в бою. Его дивизион подводных лодок был одним из самых результативных на Северном флоте.</div>
+      </div>
+    </div>
+
+    <!-- Хабиб -->
+    <div class="pers-card r d2">
+      <div class="pers-era era-modern">Современность</div>
+      <div class="pers-body">
+        <div class="pers-name">Хабиб Нурмагомедов</div>
+        <div class="pers-years">1988 — настоящее время</div>
+        <div class="pers-role">Чемпион UFC · Самбист · Легенда</div>
+        <div class="pers-bio">Непобеждённый чемпион мира в лёгком весе UFC. Рекорд 29–0. Вырос в Кировском ауле. Поставил Дагестан на спортивную карту мира. После завершения карьеры — тренер и посол борьбы.</div>
+        <div class="pers-quote">«Я не просто дерусь за себя. Я дерусь за весь Дагестан, за всех мусульман.»</div>
+      </div>
+    </div>
+
+    <!-- Ислам Махачев -->
+    <div class="pers-card r d3">
+      <div class="pers-era era-modern">Современность</div>
+      <div class="pers-body">
+        <div class="pers-name">Ислам Махачев</div>
+        <div class="pers-years">1991 — настоящее время</div>
+        <div class="pers-role">Действующий чемпион UFC · Лёгкий вес</div>
+        <div class="pers-bio">Воспитанник школы Хабиба. Действующий чемпион UFC в лёгком весе. Неоднократно признавался лучшим бойцом планеты по версиям UFC и ESPN. Продолжает традицию дагестанского борца.</div>
+        <div class="pers-quote">Стиль борьбы — дагестанская вольная. Характер — горский. Результат — мировое чемпионство.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- PLACES -->
 <section id="places">
   <div class="places-head">
@@ -547,7 +1045,6 @@ footer {
     </div>
   </div>
 
-  <!-- Гуниб отдельно -->
   <div style="margin-top:1.2rem">
     <div class="place-card r" style="border-radius:1.5rem">
       <img
@@ -560,6 +1057,126 @@ footer {
         <p>Горы, облака под ногами, аулы на склонах. Тихий и величественный — другой Дагестан.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CITIES -->
+<section id="cities">
+  <div class="cities-head">
+    <div class="about-tag r">Города Дагестана</div>
+    <h2 class="about-h2 r d1">Каждый город —<br>отдельная история</h2>
+    <p class="r d2">Дагестан — это не только Махачкала. Каждый город республики неповторим по духу, архитектуре и характеру.</p>
+  </div>
+
+  <div class="cities-list">
+
+    <!-- Дербент -->
+    <div class="city-card r">
+      <img class="city-img"
+        src="https://russia.ru/storage/news/resized/4cfdd0a129e9738d4a99b7e2bb739156.webp"
+        alt="Дербент">
+      <div class="city-body">
+        <div class="city-badge">Древнейший город России</div>
+        <div class="city-name">Дербент</div>
+        <div class="city-sub">Основан ок. 438 года н. э.</div>
+        <div class="city-desc">Старейший город России и один из старейших непрерывно населённых городов мира. Стены цитадели Нарын-Кала — объект ЮНЕСКО. Через Дербент проходил Великий Шёлковый путь. Здесь скрещивались персидские, арабские и тюркские влияния на протяжении полутора тысяч лет.</div>
+        <div class="city-facts">
+          <span class="city-fact">~130 тыс. жителей</span>
+          <span class="city-fact">UNESCO</span>
+          <span class="city-fact">Шёлковый путь</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Каспийск -->
+    <div class="city-card r d1">
+      <img class="city-img"
+        src="https://indieview.ru/wp-content/uploads/2023/07/kaspiysk-zaglavnaya-869x400.jpg"
+        alt="Каспийск">
+      <div class="city-body">
+        <div class="city-badge">Город-спутник</div>
+        <div class="city-name">Каспийск</div>
+        <div class="city-sub">Основан в 1932 году</div>
+        <div class="city-desc">Молодой промышленный город в 15 км от Махачкалы. В советское время — центр оборонной промышленности. Сегодня это пляжная зона и спокойный противовес шумной столице. Именно отсюда родом семья Нурмагомедовых — отец Хабиба тренировал здесь будущих чемпионов.</div>
+        <div class="city-facts">
+          <span class="city-fact">~130 тыс. жителей</span>
+          <span class="city-fact">Каспийский берег</span>
+          <span class="city-fact">Родина Хабиба</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Хасавюрт -->
+    <div class="city-card r d2">
+      <img class="city-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/d/db/%D0%A5%D0%B0%D1%81%D0%B0%D0%B2%D1%8E%D1%80%D1%82.jpg"
+        alt="Хасавюрт">
+      <div class="city-body">
+        <div class="city-badge">Торговый центр</div>
+        <div class="city-name">Хасавюрт</div>
+        <div class="city-sub">Второй по величине город</div>
+        <div class="city-desc">Живой, кипящий торговый узел на стыке Дагестана и Чечни. Многонациональный город — здесь живут кумыки, аварцы, чеченцы, ногайцы. Хасавюртовские соглашения 1996 года знает вся страна. Город с характером и базаром, который не спит.</div>
+        <div class="city-facts">
+          <span class="city-fact">~160 тыс. жителей</span>
+          <span class="city-fact">Многонациональный</span>
+          <span class="city-fact">Торговый хаб</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Избербаш -->
+    <div class="city-card r d1">
+      <img class="city-img"
+        src="https://caspian.travel/upload/excursions/%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%D0%9F%D0%B0%D0%BF%D0%BA%D0%B0/%D0%B8%D0%B7%D0%B1%D0%B5%D1%80%D0%B1%D0%B0%D1%88.jpeg"
+        alt="Избербаш">
+      <div class="city-body">
+        <div class="city-badge">Нефтяной город</div>
+        <div class="city-name">Избербаш</div>
+        <div class="city-sub">Основан в 1932 году</div>
+        <div class="city-desc">Вырос вместе с нефтяной промышленностью. Один из самых чистых и ухоженных малых городов Дагестана — жители гордятся этим. Прекрасный каспийский берег, сосновые посадки, советская планировка. Маленький, спокойный, свой.</div>
+        <div class="city-facts">
+          <span class="city-fact">~60 тыс. жителей</span>
+          <span class="city-fact">Нефть · Каспий</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Буйнакск -->
+    <div class="city-card r d2">
+      <img class="city-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/e/e8/%D0%97%D0%B8%D0%BC%D0%BD%D0%B8%D0%B9_%D0%91%D1%83%D0%B9%D0%BD%D0%B0%D0%BA%D1%81%D0%BA.jpg"
+        alt="Буйнакск">
+      <div class="city-body">
+        <div class="city-badge">Старая столица</div>
+        <div class="city-name">Буйнакск</div>
+        <div class="city-sub">Бывший Темир-Хан-Шура</div>
+        <div class="city-desc">До 1921 года — столица региона под названием Темир-Хан-Шура. Переименован в честь революционера Уллубия Буйнакского. Сохранил дореволюционную архитектуру и горный дух. Окружён предгорьями, рядом — военные части и тихие аулы.</div>
+        <div class="city-facts">
+          <span class="city-fact">~65 тыс. жителей</span>
+          <span class="city-fact">Бывшая столица</span>
+          <span class="city-fact">Предгорья</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Дагестанские Огни -->
+    <div class="city-card r d3">
+      <img class="city-img"
+        src="https://gorodarus.ru/images/dagogni/dagognimain.jpg"
+        alt="Дагестанские Огни">
+      <div class="city-body">
+        <div class="city-badge">Стеклянная столица</div>
+        <div class="city-name">Дагестанские Огни</div>
+        <div class="city-sub">Основан в 1914 году</div>
+        <div class="city-desc">Название — от природных газовых факелов, которые горели здесь веками. Советские геологи открыли месторождения, и вырос промышленный город. Сегодня известен стекольным производством — посуда отсюда расходилась по всему СССР.</div>
+        <div class="city-facts">
+          <span class="city-fact">~30 тыс. жителей</span>
+          <span class="city-fact">Стеклозавод</span>
+          <span class="city-fact">Газовые огни</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -612,6 +1229,135 @@ footer {
         <div class="food-num">04 · Суперфуд</div>
         <div class="food-name">Урбеч</div>
         <div class="food-desc">Паста из льна, орехов или абрикосовых косточек. Старый горский суперфуд.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KUMYK LANGUAGE -->
+<section id="kumyk">
+  <div class="kumyk-pattern"></div>
+  <svg class="kumyk-ornament" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="100,10 190,55 190,145 100,190 10,145 10,55" stroke="#C0922E" stroke-width="1" fill="none"/>
+    <polygon points="100,30 170,65 170,135 100,170 30,135 30,65" stroke="#C0922E" stroke-width="1" fill="none"/>
+    <polygon points="100,50 150,75 150,125 100,150 50,125 50,75" stroke="#C0922E" stroke-width="1" fill="none"/>
+    <circle cx="100" cy="100" r="8" fill="#C0922E" opacity=".3"/>
+    <line x1="100" y1="10" x2="100" y2="190" stroke="#C0922E" stroke-width=".5" opacity=".3"/>
+    <line x1="10" y1="100" x2="190" y2="100" stroke="#C0922E" stroke-width=".5" opacity=".3"/>
+  </svg>
+
+  <div class="kumyk-layout">
+    <div>
+      <div class="kumyk-tag r">Тюркский язык</div>
+      <h2 class="kumyk-h2 r d1">Кумыкский —<br><em>язык степей</em><br>и торговых путей</h2>
+      <div class="kumyk-body r d2">
+        <p>Кумыкский язык — один из тюркских языков, на котором говорят <strong>кумыки</strong>, коренной народ Дагестана. На протяжении нескольких веков он был <strong>языком межнационального общения</strong> всего Северного Кавказа — своеобразная lingua franca горцев.</p>
+        <p>Кумыки живут преимущественно на плоскости Дагестана — в районах Хасавюрта, Буйнакска, Кизляра и Махачкалы. Язык <strong>близок к турецкому и азербайджанскому</strong> — носитель одного без труда понимает основу другого.</p>
+        <p>До революции именно на кумыкском издавалась бо́льшая часть дагестанских газет и литература. Сегодня — государственный язык Дагестана наряду с аварским, даргинским и другими.</p>
+      </div>
+      <div class="kumyk-stats r d3">
+        <div class="kumyk-stat">
+          <div class="kumyk-stat-num">~500 тыс.</div>
+          <div class="kumyk-stat-label">носителей в Дагестане и диаспоре</div>
+        </div>
+        <div class="kumyk-stat">
+          <div class="kumyk-stat-num">Тюркский</div>
+          <div class="kumyk-stat-label">языковая семья — кипчакская ветвь</div>
+        </div>
+        <div class="kumyk-stat">
+          <div class="kumyk-stat-num">Lingua franca</div>
+          <div class="kumyk-stat-label">язык торговли Северного Кавказа</div>
+        </div>
+        <div class="kumyk-stat">
+          <div class="kumyk-stat-num">Кириллица</div>
+          <div class="kumyk-stat-label">современная письменность с 1938 года</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="r d2">
+      <div class="kumyk-phrases">
+        <div class="kumyk-phrases-head">Кумыкский язык — примеры</div>
+        <div class="kumyk-row">
+          <div class="kumyk-original">Салам алейкум</div>
+          <div class="kumyk-trans">Мир вам / Привет<br><span style="font-size:.75rem;color:rgba(254,252,247,.3)">арабское заимствование, ставшее родным</span></div>
+        </div>
+        <div class="kumyk-row">
+          <div class="kumyk-original">Сен кимсен?</div>
+          <div class="kumyk-trans">Кто ты?<br><span style="font-size:.75rem;color:rgba(254,252,247,.3)">слышна связь с турецким «sen kimsin»</span></div>
+        </div>
+        <div class="kumyk-row">
+          <div class="kumyk-original">Дагъыстан — тавлар юрту</div>
+          <div class="kumyk-trans">Дагестан — страна гор<br><span style="font-size:.75rem;color:rgba(254,252,247,.3)">«таулар» — горы, «юрт» — родина</span></div>
+        </div>
+        <div class="kumyk-row">
+          <div class="kumyk-original">Яхшы ёлгъа!</div>
+          <div class="kumyk-trans">Счастливого пути!<br><span style="font-size:.75rem;color:rgba(254,252,247,.3)">«яхшы» — хороший (ср. турецк. «iyi»)</span></div>
+        </div>
+        <div class="kumyk-row">
+          <div class="kumyk-original">Аллагь разы болсун</div>
+          <div class="kumyk-trans">Да будет доволен Аллах<br><span style="font-size:.75rem;color:rgba(254,252,247,.3)">традиционное благодарение</span></div>
+        </div>
+        <div class="kumyk-row">
+          <div class="kumyk-original">Тавлар — бизин уьюбюз</div>
+          <div class="kumyk-trans">Горы — наш дом<br><span style="font-size:.75rem;color:rgba(254,252,247,.3)">народная поговорка</span></div>
+        </div>
+        <div class="kumyk-row">
+          <div class="kumyk-original">Эркин адам</div>
+          <div class="kumyk-trans">Свободный человек<br><span style="font-size:.75rem;color:rgba(254,252,247,.3)">ключевое понятие горского мировоззрения</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IT HUB -->
+<section id="ithub">
+  <div class="ithub-layout">
+    <div>
+      <div class="ithub-tag r">Цифровой Дагестан</div>
+      <h2 class="ithub-h2 r d1">Махачкала —<br>новый <em>IT-хаб</em><br>юга России</h2>
+      <div class="ithub-body r d2">
+        <p>Тихая революция происходит в одном из «нетехнологических» регионов страны. <strong>Махачкала становится точкой притяжения</strong> для разработчиков, стартапов и технологических компаний.</p>
+        <p>После 2022 года, когда многие IT-специалисты искали варианты внутри страны, <strong>Дагестан оказался неожиданно привлекательным</strong>: низкая стоимость жизни, тёплый климат, быстрый интернет и молодое работоспособное население.</p>
+        <p>В Махачкале активно развивается <strong>«IT-квартал»</strong> в центре города. Открываются коворкинги, образовательные центры, проводятся хакатоны. Местные студенты выигрывают всероссийские олимпиады по программированию.</p>
+      </div>
+      <div class="ithub-metrics r d3">
+        <div class="ithub-metric">
+          <div class="ithub-metric-num">3 800+</div>
+          <div class="ithub-metric-label">IT-специалистов в регионе</div>
+        </div>
+        <div class="ithub-metric">
+          <div class="ithub-metric-num">ТОП-10</div>
+          <div class="ithub-metric-label">регионов по росту IT-занятости</div>
+        </div>
+        <div class="ithub-metric">
+          <div class="ithub-metric-num">12+</div>
+          <div class="ithub-metric-label">коворкингов и хабов</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ithub-cards r d2">
+      <div class="ithub-card">
+        <div class="ithub-icon">🏗️</div>
+        <div class="ithub-card-title">IT-квартал Махачкалы</div>
+        <div class="ithub-card-desc">Городской проект по созданию технологического кластера в центре города. Коворкинги, акселераторы и офисы технологических компаний сосредоточены в одном районе — по образцу «Сколково», но со своим южным характером.</div>
+      </div>
+      <div class="ithub-card">
+        <div class="ithub-icon">🎓</div>
+        <div class="ithub-card-title">Технологическое образование</div>
+        <div class="ithub-card-desc">ДГУ, ДГТУ и частные IT-школы ежегодно выпускают тысячи специалистов. «Яндекс Лицей» открыл набор в Махачкале. Студенты дагестанских вузов занимают призовые места в олимпиадах по программированию.</div>
+      </div>
+      <div class="ithub-card">
+        <div class="ithub-icon">💡</div>
+        <div class="ithub-card-title">Стартапы и хакатоны</div>
+        <div class="ithub-card-desc">Регулярные хакатоны собирают участников со всего Северного Кавказа. Несколько дагестанских стартапов привлекли федеральное внимание и инвестиции. Местный рынок труда в IT-секторе растёт быстрее среднего по России.</div>
+      </div>
+      <div class="ithub-card">
+        <div class="ithub-icon">📡</div>
+        <div class="ithub-card-title">Инфраструктура</div>
+        <div class="ithub-card-desc">Оптоволоконные магистрали, скоростной интернет в большинстве районов, мобильное покрытие 4G/5G вдоль Каспия. Стоимость жизни в 2–3 раза ниже Москвы при сопоставимых зарплатах в IT.</div>
       </div>
     </div>
   </div>
@@ -729,7 +1475,7 @@ const obs = new IntersectionObserver(entries => {
       obs.unobserve(e.target);
     }
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.r').forEach(el => obs.observe(el));
 
 /* Smooth anchors */
